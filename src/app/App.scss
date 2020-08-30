@@ -1,0 +1,10 @@
+@import 'toolkit';
+
+.App {
+  @include center-container();
+  background-color: getTheme('backgroundContainer');
+
+  @include breakpoint() {
+    flex-direction: column;
+  }
+}

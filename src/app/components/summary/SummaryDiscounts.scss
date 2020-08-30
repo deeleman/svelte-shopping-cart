@@ -1,0 +1,18 @@
+@import 'toolkit';
+
+.summary-discounts {
+  @include tabularList;
+  
+  h2 {
+  color: getTheme('subHeader');
+  }
+}
+
+
+.wrapper-half {
+  padding: 24px 0;
+
+  &.border {
+    @include summary-block;
+  }
+}

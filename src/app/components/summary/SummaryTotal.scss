@@ -1,0 +1,33 @@
+@import 'toolkit';
+
+.summary-total {
+  align-self: flex-end;
+  margin-top: auto;
+   
+  border-top: 1px solid getTheme('asideBlockBorder');
+  color: getTheme('summaryTextColor');
+
+  &.wrapper {
+    @include tabularList;
+
+    padding-top: 16px;
+    padding-bottom: 0;
+  }
+
+  &-cost {
+    @include medium-small-text;
+    flex-basis: 2;
+    text-transform: uppercase;
+  }
+
+  &-price {
+    @include large-text;
+    font-weight: bold;
+  }
+
+  button[type="submit"] {
+    @include large-cta;
+    background: getTheme('ctaBackground');
+    color: getTheme('ctaColor');
+  }
+}

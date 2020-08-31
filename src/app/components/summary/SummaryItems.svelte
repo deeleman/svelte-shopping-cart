@@ -1,11 +1,8 @@
 <style lang="scss">
   @import 'toolkit';
-  .summary-items {
-    @include tabularList;
-    &-price {
-      font-size: 16px;
-      font-weight: bold;
-    }
+  .summary-items-price {
+    font-size: 16px;
+    font-weight: bold;
   }
 </style>
 

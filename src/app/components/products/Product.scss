@@ -2,7 +2,10 @@
 
 .product-name {
   @include medium-text;
-  color: getTheme('productName');
+  
+  a:link, a:visited, a {
+    color: getTheme('productName');
+  }
 
   a:hover {
     text-decoration: underline;

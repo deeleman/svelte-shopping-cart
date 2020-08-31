@@ -13,12 +13,12 @@
 
 <template>
   <figure class="product-image">
-    <a on:click={() => dispatch('select')} href="#">
+    <a on:click|preventDefault={() => dispatch('select')} href="sanitizeName(name)">
       <img role="img" src={sanitizeName(name)} alt={name} />
     </a>
     <div class="product-description">
       <h3 class="product-name" aria-label="product-name">
-        <a on:click={() => dispatch('select')} href="#">{name}</a>
+        <a on:click|preventDefault={() => dispatch('select')} href="/">{name}</a>
       </h3>
       <p aria-label="product-code" class="product-code"><span>Product code</span> {code}</p>
     </div>

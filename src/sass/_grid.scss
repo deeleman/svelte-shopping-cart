@@ -3,17 +3,17 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-}
 
-.row + .row {
-  margin-top: 32px;
+  & + & {
+    margin-top: 32px;
+  }
 }
 
 [class*="col-"] {
   display: flex;
   align-items: center;
-}
 
-[class*="col-"]:nth-child(n + 2) {
-  justify-content: center;
+  &:not([class="col-product"]) {
+    justify-content: center;
+  }
 }

@@ -1,11 +1,7 @@
 @import 'toolkit';
 
-.summary-discounts {
-  @include tabularList;
-  
-  h2 {
+.summary-discounts h2 {
   color: getTheme('subHeader');
-  }
 }
 
 

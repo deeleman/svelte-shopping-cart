@@ -117,19 +117,3 @@
   margin-top: 20px;
   padding: 24px 0;
 }
-
-@mixin tabularList {
-  & li {
-    @include medium-small-text;
-    display: flex;
-    justify-content: space-between;
-  
-    > *:nth-child(2) {
-      font-weight: bold;
-    }
-  
-    & + li {
-      margin-top: 20px;
-    }
-  }
-}

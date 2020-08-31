@@ -31,19 +31,19 @@
     }
   }
   
-  .col-product {
+  :global(.col-product) {
     width: 45%;
   }
   
-  .col-quantity {
+  :global(.col-quantity) {
     width: 20%;
   }
   
-  .col-price {
+  :global(.col-price) {
     width: 20%;
   }
   
-  .col-total {
+  :global(.col-total) {
     width: 15%;
   }
 }

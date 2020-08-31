@@ -40,12 +40,12 @@
   <main class="App">
     <Products isLoading={cartState?.isLoading}>
       <ProductsList items={cartState?.catalogueItems} on:scan={(e) => catalogue.addItem(e.detail)} on:remove={(e) => catalogue.removeItem(e.detail)} on:select={toggleModal} />
-      <ProductModal item={selectedItem} on:scan={(e) => catalogue.addItem(e.detail)} on:close={toggleModal} />
-    </Products>
-    <Summary>
-      <SummaryItems quantity={cartItemsAmount} subTotal={cartSubtotal} />
-      <SummaryDiscounts items={cartState?.discountItems} />
-      <SummaryTotal isLoading={cartState?.isLoading} total={cartTotal} />
-    </Summary>
-  </main>
+      </Products>
+      <Summary>
+        <SummaryItems quantity={cartItemsAmount} subTotal={cartSubtotal} />
+        <SummaryDiscounts items={cartState?.discountItems} />
+        <SummaryTotal isLoading={cartState?.isLoading} total={cartTotal} />
+      </Summary>
+    </main>
+    <ProductModal item={selectedItem} on:scan={(e) => catalogue.addItem(e.detail)} on:close={toggleModal} />
 </template>

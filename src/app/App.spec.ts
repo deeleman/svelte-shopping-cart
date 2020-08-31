@@ -12,7 +12,7 @@ describe('App integration tests', () => {
     discountRules:  'https://test.dev/api/v1/discounts',
   };
 
-  const renderApp = () => render(<App settings={settingsMock}></App>);
+  const renderApp = () => render(App, { settings: settingsMock });
 
   it('should render product items once fetched', async () => {
     const { findAllByLabelText, getAllByLabelText } = renderApp();

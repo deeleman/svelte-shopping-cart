@@ -1,14 +1,12 @@
 import '@testing-library/jest-dom';
 import { cleanup, render, screen, fireEvent } from '@testing-library/svelte';
 
-import { Product } from '../Product.svelte.bak';
-
-jest.mock('./../../../../img/items');
+import Product from '../Product.svelte';
 
 describe('Product', () => {
   const selectHandlerStub = jest.fn();
 
-  beforeEach(() => render(<Product name={'React Mug'} code={'X2G2OPZ'} select={selectHandlerStub} />));
+  beforeEach(() => render(Product, { name: 'React Mug', code: 'X2G2OPZ'}));
 
   afterEach(() => jest.resetAllMocks());
 
@@ -26,12 +24,6 @@ describe('Product', () => {
   
   it('should display an image depicting the product thumbnail', () => {
     expect(screen.getByRole('img').getAttribute('src')).toEqual('mug.png'); 
-  });
-  
-  it('should display a fallback image if the product has not thumbnail matching its code', () => {
-    cleanup();
-    const { getByRole } = render(<Product name={'Foo'} code={'X2G2OPZ'} select={selectHandlerStub} />);
-    expect(getByRole('img').getAttribute('src')).toEqual('fallback.png'); 
   });
 
   it('should call the select handler when the user clicks on the product name', () => {

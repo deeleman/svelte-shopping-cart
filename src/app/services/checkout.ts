@@ -1,7 +1,6 @@
 import { writable, Writable } from 'svelte/store';
-import type { PricingSettings, PricingRules } from 'shopping-cart/types';
+import type { CartState, PricingSettings, PricingRules } from 'shopping-cart/types';
 import { dataService, getDiscounts } from 'shopping-cart/services';
-import type { CartState } from './store.types';
 
 const initialPricingRules: PricingRules = {
   items: [],
@@ -14,7 +13,7 @@ const initialCartState: CartState = {
   discountItems: [],
 };
 
-export class CatalogueStore {
+export class Checkout {
   cart: Writable<CartState> = writable(initialCartState);
 
   private pricingRules: PricingRules = initialPricingRules;

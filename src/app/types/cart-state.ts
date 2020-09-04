@@ -1,5 +1,5 @@
-import type { DiscountItem, CatalogueItem } from 'shopping-cart/types';
-import type { Writable } from 'svelte/store';
+import type { CatalogueItem } from './cart-item';
+import type { DiscountItem } from './discounts';
 
 export interface CartState {
   isLoading: boolean;

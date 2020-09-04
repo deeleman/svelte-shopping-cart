@@ -5,4 +5,7 @@ export interface CartState {
   isLoading: boolean;
   catalogueItems: CatalogueItem[];
   discountItems: DiscountItem[];
+  cartItemsAmount: number;
+  cartSubtotal: number;
+  cartTotal: number;
 }

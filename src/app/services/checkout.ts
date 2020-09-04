@@ -1,5 +1,5 @@
 import { writable, Writable } from 'svelte/store';
-import type { CartState, PricingSettings, PricingRules } from 'shopping-cart/types';
+import type { CartState, PricingSettings, PricingRules, CatalogueItem, DiscountItem } from 'shopping-cart/types';
 import { dataService, getDiscounts } from 'shopping-cart/services';
 
 const initialPricingRules: PricingRules = {
@@ -7,10 +7,13 @@ const initialPricingRules: PricingRules = {
   discountRules: [],
 };
 
-const initialCartState: CartState = {
+export const initialCartState: CartState = {
   isLoading: true,
   catalogueItems: [],
   discountItems: [],
+  cartItemsAmount: 0,
+  cartSubtotal: 0,
+  cartTotal: 0,
 };
 
 export class Checkout {
@@ -34,9 +37,7 @@ export class Checkout {
         catalogueItems.push({ ...item, quantity: quantity || 1 });
       }
 
-      const discountItems = getDiscounts(catalogueItems, this.pricingRules.discountRules);
-
-      return { catalogueItems, discountItems, isLoading: false };
+      return this.composeStateSnapshot(catalogueItems);
     });
   }
 
@@ -51,17 +52,24 @@ export class Checkout {
         catalogueItems.push({ ...item, quantity: 0 });
       }
 
-      const discountItems = getDiscounts(catalogueItems, this.pricingRules.discountRules);
-      
-      return { catalogueItems, discountItems, isLoading: false };
+      return this.composeStateSnapshot(catalogueItems);
     });
+  }
+
+  private composeStateSnapshot(catalogueItems: CatalogueItem[]): CartState {
+    const discountItems = getDiscounts(catalogueItems, this.pricingRules.discountRules);
+    const cartItemsAmount = catalogueItems.reduce((items, item) => items + item.quantity, 0);
+    const cartSubtotal = catalogueItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const cartTotal = cartSubtotal - discountItems.reduce((total, item) => total + item.subTotal, 0);
+
+    return { catalogueItems, discountItems, cartItemsAmount, cartSubtotal, cartTotal, isLoading: false };
   }
 
   private async fetchItems(): Promise<void> {
     this.pricingRules = await dataService<PricingRules>(this.settings);
     this.cart.set({
+      ...initialCartState,
       catalogueItems: this.pricingRules.items.map((item) => ({ ...item, quantity: 0 })),
-      discountItems: [],
       isLoading: false
     });
   }

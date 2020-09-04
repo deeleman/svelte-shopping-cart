@@ -3,9 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "shopping-cart/*": ["./src/app/*"]
-    }
+      "shopping-cart/*": ["./src/app/*"],
+      "shopping-cart-api/*": ["./public/*"]
+    },
+    "types": ["svelte", "node"],
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*", "*bak", "**/__tests__/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
 }

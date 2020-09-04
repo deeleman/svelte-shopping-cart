@@ -1,9 +1,19 @@
 const sass = require('node-sass');
+const sveltePreprocess = require('svelte-preprocess');
 
 module.exports = {
-  preprocess: {
+  preprocess: sveltePreprocess({
+    postcss: true,
     scss: {
-      includePaths: ['src/sass']
+      includePaths: ['src/sass'],
+      postcss: {
+        plugins: [require('autoprefixer')],
+      },
+    },
+    alias: {
+      entries: {
+        'shopping-cart': 'src/app'
+      }
     },
     style: async ({ content, attributes }) => {
       if (attributes.type !== 'text/scss') {
@@ -21,5 +31,5 @@ module.exports = {
         map: result.map.toString('utf8'),
       };
     },
-  },
+  }),
 };

@@ -76,16 +76,15 @@ module.exports = {
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
+    "svelte",
     "ts",
     "js",
-    "svelte"
   ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^shopping-cart-api\/fixtures\/(.*)$': '<rootDir>/public/api/fixtures/$1.json',
     '^shopping-cart\/(.*)$': '<rootDir>/src/app/$1',
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy'
+    '^shopping-cart-api\/fixtures\/(.*)$': '<rootDir>/public/api/fixtures/$1.json',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -179,6 +178,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   "transform": {
+    "^.+\\.ts$": "ts-jest",
     "^.+\\.js$": "babel-jest",
     "^.+\\.svelte$": [
       "svelte-jester",
@@ -186,7 +186,6 @@ module.exports = {
         "preprocess": true
       }
     ],
-    "^.+\\.ts$": "ts-jest"
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
@@ -204,4 +203,6 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  bail: false,
+  verbose: true,
 };

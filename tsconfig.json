@@ -4,10 +4,11 @@
     "baseUrl": ".",
     "paths": {
       "shopping-cart/*": ["./src/app/*"],
-      "shopping-cart-api/*": ["./public/*"]
+      "shopping-cart-api/*": ["public/*"]
     },
     "types": ["svelte", "node"],
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/build/*"],
 }
